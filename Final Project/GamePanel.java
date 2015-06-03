@@ -4,7 +4,7 @@ import java.awt.image.*;
 import java.awt.event.*;
 public class GamePanel extends JPanel
 {                                        //fields
-   private BufferedImage myImage;                    //tank’s image
+   private BufferedImage myImage;                    //tankâ€™s image
    private Graphics myBuffer;                        //buffer
    private JLabel health;                        //health label
    private int waveCount;                        //wave number
@@ -25,6 +25,10 @@ public class GamePanel extends JPanel
    */
       myImage = new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
+      myTank = new Tank();
+      gameTimer = 0;
+      waveCount = 1;
+      
    }
    public void paintComponent(Graphics g)                //draws image
    {
