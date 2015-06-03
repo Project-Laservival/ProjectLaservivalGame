@@ -1,4 +1,3 @@
-package weapon;
 public class MediumWeapon extends Weapon
 {   
    public MediumWeapon()

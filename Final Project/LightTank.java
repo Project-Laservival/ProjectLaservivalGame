@@ -1,5 +1,3 @@
-package tank;
-import weapon.*;
 import java.awt.*;
 public class LightTank extends Tank
 {   

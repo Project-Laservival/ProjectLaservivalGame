@@ -1,5 +1,3 @@
-package tank;
-import weapon.*;
 import java.awt.*;
 import javax.swing.ImageIcon;
 public abstract class Tank

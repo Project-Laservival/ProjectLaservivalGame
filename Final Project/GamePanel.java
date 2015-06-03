@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.event.*;
-import engine.*;
 public class GamePanel extends JPanel
 {                                        //fields
    private BufferedImage myImage;                    //tank’s image
@@ -12,6 +11,8 @@ public class GamePanel extends JPanel
    private Timer gameTimer;                        //timer
    private Tank myTank;                            //tank type
    private ImageIcon myImg;                        //tank image
+   
+   private static final int FRAME = 600;
    public GamePanel()                            //constructor
    {
     /*
@@ -22,6 +23,8 @@ public class GamePanel extends JPanel
     Instantiate and start timer of 10 ms, add ListenerGame
     Add keyListener
    */
+      myImage = new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
+      myBuffer = myImage.getGraphics();
    }
    public void paintComponent(Graphics g)                //draws image
    {

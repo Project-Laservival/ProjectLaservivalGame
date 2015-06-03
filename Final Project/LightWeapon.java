@@ -1,4 +1,3 @@
-package weapon;
 public class LightWeapon extends Weapon
 {   
    public LightWeapon()
