@@ -25,6 +25,10 @@ public abstract class Tank
    }
    
    public abstract void automove();
+   {
+      int random = (int)(Math.random() * 4);
+      return random * 90;
+   }
    
    public int getHealth()
    {
