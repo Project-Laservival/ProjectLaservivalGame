@@ -4,31 +4,32 @@ import java.awt.image.*;
 import java.awt.event.*;
 public class GamePanel extends JPanel
 {                                        //fields
-   private BufferedImage myImage;                    //tank’s image
+   private BufferedImage myImage;                    //image
    private Graphics myBuffer;                        //buffer
    private JLabel health;                        //health label
    private int waveCount;                        //wave number
    private Timer gameTimer;                        //timer
    private Tank myTank;                            //tank type
-   private ImageIcon myImg;                        //tank image
-   
+   private ImageIcon tankIcon;                        //tank image
    private static final int FRAME = 600;
+   
    public GamePanel()                            //constructor
    {
     /*
     Create image and buffer
     Instantiate myTank
-    Set myImg
+    Set myIcon
     Instantiate health with base health of myTank
     Instantiate and start timer of 10 ms, add ListenerGame
     Add keyListener
    */
       myImage = new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
-      myTank = new Tank();
-      gameTimer = 0;
-      waveCount = 1;
+      myTank = OptionsPanel.getTankType();
+      tankIcon = myTank.getIcon();
       
+      gameTimer = new Timer(1000, new ListenerGame());
+      waveCount = 1;
    }
    public void paintComponent(Graphics g)                //draws image
    {
@@ -38,6 +39,7 @@ public class GamePanel extends JPanel
     Update enemy tank images
     */
    }
+   
    private class Key extends KeyAdapter                //yay keyboard
    {
       public void keyPressed(KeyEvent e)
@@ -46,25 +48,20 @@ public class GamePanel extends JPanel
        Depending on pressed arrow keys, load different image
        Add shooting code when spacebar is pressed
        */
-       if(keyPressed(VK_DOWN)||keyPressed(VK_KP_DOWN))
+         if(e.getKeyCode() == KeyEvent.VK_W)
          {
-           //image down 
          }
-      if(keyPressed(VK_UP)||keyPressed(VK_KP_UP))
+         if(e.getKeyCode() == KeyEvent.VK_A)
          {
-           //image up 
          }
-      if(keyPressed(VK_LEFT)||keyPressed(VK_KP_LEFT))
+         if(e.getKeyCode() == KeyEvent.VK_S)
          {
-            //image left
          }
-      if(keyPressed(VK_RIGHT)||keyPressed(VK_KP_RIGHT))
+         if(e.getKeyCode() == KeyEvent.VK_D)
          {
-            //image right
          }
-      if(keyPressed(VK_SPACE))
+         if(e.getKeyCode() == KeyEvent.VK_SPACE)
          {
-         //shooting code
          }
       }
    }

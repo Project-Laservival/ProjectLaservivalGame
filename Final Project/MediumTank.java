@@ -12,8 +12,4 @@ public class MediumTank extends Tank
       super(125, 7, new MediumWeapon(), x, y);
       setImage("mediumtank.jpg");
    }
-   
-   public void automove()
-   {
-   }
 }

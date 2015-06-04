@@ -12,8 +12,4 @@ public class HeavyTank extends Tank
       super(150, 5, new HeavyWeapon(), x, y);
       setImage("heavytank.jpg");
    }
-   
-   public void automove()
-   {
-   }   
 }

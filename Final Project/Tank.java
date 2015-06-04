@@ -4,7 +4,7 @@ public abstract class Tank
 {
    private int myHealth;
    private int mySpeed;    //pixels
-   private ImageIcon myImage;
+   private ImageIcon myIcon;
    private int myX;
    private int myY;
    private Weapon myWeapon;
@@ -24,10 +24,9 @@ public abstract class Tank
       myWeapon = weapon;
    }
    
-   public abstract void automove();
+   public void automove()
    {
       int random = (int)(Math.random() * 4);
-      return random * 90;
    }
    
    public int getHealth()
@@ -40,9 +39,9 @@ public abstract class Tank
       return mySpeed;
    }
    
-   public ImageIcon getImage()
+   public ImageIcon getIcon()
    {
-      return myImage;
+      return myIcon;
    }
    
    public int getX()
@@ -72,7 +71,7 @@ public abstract class Tank
    
    public void setImage(String filename)
    {
-      myImage = new ImageIcon(filename);
+      myIcon = new ImageIcon(filename);
    }
    
    public void setX(int x)

@@ -12,8 +12,4 @@ public class LightTank extends Tank
       super(100, 10, new LightWeapon(), x, y);
       setImage("lighttank.jpg");
    }
-   
-   public void automove()
-   {
-   }
 }
