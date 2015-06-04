@@ -48,24 +48,29 @@ public class GamePanel extends JPanel
        */
        if(keyPressed(VK_DOWN)||keyPressed(VK_KP_DOWN))
          {
+           myY = myY + mySpeed;
            //image down 
          }
       if(keyPressed(VK_UP)||keyPressed(VK_KP_UP))
          {
            //image up 
+           myY = myY - mySpeed;
          }
       if(keyPressed(VK_LEFT)||keyPressed(VK_KP_LEFT))
          {
             //image left
+            myX = myX - mySpeed;
          }
       if(keyPressed(VK_RIGHT)||keyPressed(VK_KP_RIGHT))
          {
             //image right
+            myX = myX + mySpeed;
          }
       if(keyPressed(VK_SPACE))
          {
          //shooting code
          }
+         repaint();
       }
    }
    private class ListenerGame implements ActionListener    //game timer
