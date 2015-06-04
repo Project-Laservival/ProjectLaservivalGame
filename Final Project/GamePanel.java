@@ -46,6 +46,26 @@ public class GamePanel extends JPanel
        Depending on pressed arrow keys, load different image
        Add shooting code when spacebar is pressed
        */
+       if(keyPressed(VK_DOWN)||keyPressed(VK_KP_DOWN))
+         {
+           //image down 
+         }
+      if(keyPressed(VK_UP)||keyPressed(VK_KP_UP))
+         {
+           //image up 
+         }
+      if(keyPressed(VK_LEFT)||keyPressed(VK_KP_LEFT))
+         {
+            //image left
+         }
+      if(keyPressed(VK_RIGHT)||keyPressed(VK_KP_RIGHT))
+         {
+            //image right
+         }
+      if(keyPressed(VK_SPACE))
+         {
+         //shooting code
+         }
       }
    }
    private class ListenerGame implements ActionListener    //game timer
