@@ -5,11 +5,13 @@ public class Turret
    private int myX;   // x and y coordinates of center
    private int myY;
    private int myRadius = 20;
+   private int width = 1366;
+   private int height = 768;
    
    public Turret()
    {
-      myX = 0;
-      myY = 0;
+      myX = (int)(Math.random() * 1326) + myRadius;
+      myY = (int)(Math.random() * 728) + myRadius;
    }
    
    public Turret(int x, int y)

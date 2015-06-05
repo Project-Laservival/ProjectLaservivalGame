@@ -2,18 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.event.*;
+import java.util.*;
+
 public class GamePanel extends JPanel
 {                                        //fields
    private BufferedImage myImage;                    //image
    private Graphics myBuffer;                        //buffer
    private JLabel health;                        //health label
    private int waveCount;                        //wave number
-   private Timer gameTimer;                        //timer
+   private javax.swing.Timer gameTimer;                        //timer
    private Tank myTank;                            //tank type
    private Laser myLaser = null;
    private boolean shooting = false;
    private int width = 1366;
    private int height = 768;
+   java.util.List<Laser> laserList = new ArrayList<Laser>();
+   java.util.List<Turret> turretList = new ArrayList<Turret>();
    
    public GamePanel()                            //constructor
    {
@@ -30,7 +34,7 @@ public class GamePanel extends JPanel
       myBuffer = myImage.getGraphics();
       myTank = OptionsPanel.getTankType();
       
-      gameTimer = new Timer(10, new ListenerGame());
+      gameTimer = new javax.swing.Timer(10, new ListenerGame());
       gameTimer.start();
       
       addKeyListener(new Key());
@@ -119,6 +123,10 @@ public class GamePanel extends JPanel
          myBuffer.setColor(Color.WHITE);
          myBuffer.fillRect(0, 0, width, height); 
       
+         if(rng())
+         {
+            turretList.add(new Turret());
+         }
          myTank.draw(myBuffer);
          
          if(shooting)
