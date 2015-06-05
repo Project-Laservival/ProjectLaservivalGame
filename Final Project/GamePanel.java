@@ -9,8 +9,9 @@ public class GamePanel extends JPanel
    private JLabel health;                        //health label
    private int waveCount;                        //wave number
    private Timer gameTimer;                        //timer
-   private Tank myTank, enemyTank;                            //tank type
-   private static final int FRAME = 600;
+   private Tank myTank;                            //tank type
+   private Laser myLaser = null;
+   private boolean shooting = false;
    
    public GamePanel()                            //constructor
    {
@@ -23,7 +24,7 @@ public class GamePanel extends JPanel
     Add keyListener
    */
    
-      myImage = new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
+      myImage = new BufferedImage(1366, 650, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
       myTank = OptionsPanel.getTankType();
       
@@ -77,6 +78,8 @@ public class GamePanel extends JPanel
          
          if(e.getKeyCode() == KeyEvent.VK_SPACE)
          {
+            myLaser = new Laser(myTank.getX() + 50, myTank.getY() + 50, myTank.getDirection());
+            shooting = true;
          }
       }
    }
@@ -89,10 +92,15 @@ public class GamePanel extends JPanel
        Updates buffer
        */
          myBuffer.setColor(Color.WHITE);
-         myBuffer.fillRect(0,0,FRAME,FRAME); 
+         myBuffer.fillRect(0, 0, 1366, 650); 
       
          myTank.draw(myBuffer);
          
+         if(shooting)
+         {
+            myLaser.move();
+            myLaser.draw(myBuffer);
+         }
          repaint();
       }
    }
