@@ -25,22 +25,22 @@ public class OptionsPanel extends JPanel
       
                
       JPanel buttonPanel = new JPanel(new FlowLayout());
-      buttonPanel.setBackground(Color.WHITE)
+      buttonPanel.setBackground(Color.WHITE);
       add(buttonPanel, BorderLayout.CENTER);
    
       lightButton = new JButton("Light Tank");
       lightButton.addActionListener(new TankTypeListener("Light"));
-      lightButton.setBackground(Color.BLUE)
+      lightButton.setBackground(Color.BLUE.brighter());
       buttonPanel.add(lightButton);
       
       mediumButton = new JButton("Medium Tank");
       mediumButton.addActionListener(new TankTypeListener("Medium"));
-      mediumButton.setBackground(Color.GREEN)
+      mediumButton.setBackground(Color.GREEN);
       buttonPanel.add(mediumButton);
             
       heavyButton = new JButton("Heavy Tank");
       heavyButton.addActionListener(new TankTypeListener("Heavy"));
-      heavyButton.setBackground(Color.RED)
+      heavyButton.setBackground(Color.RED);
       buttonPanel.add(heavyButton);
    
       playButton = new JButton("Click to play.");
