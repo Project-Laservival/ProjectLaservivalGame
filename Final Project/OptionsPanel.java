@@ -18,12 +18,17 @@ public class OptionsPanel extends JPanel
    Instantiate “Play” button that activates after selection
    */
    
-      setLayout(new BorderLayout());
+      setLayout(new GridLayout(3,3));
    
-      tankChoice = new JLabel("Choose your tank.");
-      add(tankChoice, BorderLayout.NORTH);
+      JLabel spotTaker = new JLabel("");
+      add(spotTaker);
       
-               
+      tankChoice = new JLabel("Choose your tank.");
+      add(tankChoice);
+      
+      JLabel spotTaker2 = new JLabel("");
+      add(spotTaker2);
+      
       JPanel buttonPanel = new JPanel(new FlowLayout());
       buttonPanel.setBackground(Color.WHITE);
       add(buttonPanel, BorderLayout.CENTER);
@@ -31,6 +36,12 @@ public class OptionsPanel extends JPanel
       lightButton = new JButton("Light Tank");
       lightButton.addActionListener(new TankTypeListener("Light"));
       lightButton.setBackground(Color.BLUE);
+      buttonPanel.setBackground(Color.WHITE);
+      add(buttonPanel);
+   
+      lightButton = new JButton("Light Tank");
+      lightButton.addActionListener(new TankTypeListener("Light"));
+      lightButton.setBackground(Color.BLUE.brighter());
       buttonPanel.add(lightButton);
       
       mediumButton = new JButton("Medium Tank");
@@ -43,10 +54,16 @@ public class OptionsPanel extends JPanel
       heavyButton.setBackground(Color.RED);
       buttonPanel.add(heavyButton);
    
+      JLabel spotTaker3 = new JLabel("");
+      add(spotTaker3);
+      
       playButton = new JButton("Click to play.");
       playButton.addActionListener(new PlayListener());
       playButton.setEnabled(false);
-      add(playButton, BorderLayout.SOUTH);
+      add(playButton);
+      
+      JLabel spotTaker4 = new JLabel("");
+      add(spotTaker4);
    }
 
    public static Tank getTankType()                    //tank type getter
