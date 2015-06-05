@@ -9,18 +9,18 @@ public class Turret
    private int height = 768;
    private int myHealth = 50;
    
-   public Turret()
+   public Turret()//randomly spawns turret
    {
       myX = (int)(Math.random() * 1326) + myLength;
       myY = (int)(Math.random() * 728) + myLength;
    }
    
-   public Turret(int x, int y)
+   public Turret(int x, int y)//spawns turret in given position
    {
       myX = x;
       myY = y;
    }
-   
+   //helper methods
    public int getX()
    {
       return myX;
@@ -61,7 +61,7 @@ public class Turret
       myHealth = h;
    }
    
-   public void draw(Graphics myBuffer)
+   public void draw(Graphics myBuffer) //draws the turret
    {
       myBuffer.setColor(Color.GRAY);
       myBuffer.fillRect(myX, myY, myLength, myLength);
