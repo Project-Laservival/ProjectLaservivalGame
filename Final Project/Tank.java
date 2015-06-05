@@ -26,9 +26,10 @@ public abstract class Tank
       myWeapon = weapon;
    }
    
-   public void automove()
+   public int automove()
    {
       int random = (int)(Math.random() * 4);
+      return random;
    }
    
    public abstract String toString();
