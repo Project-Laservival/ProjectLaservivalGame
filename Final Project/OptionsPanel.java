@@ -25,7 +25,7 @@ public class OptionsPanel extends JPanel
       
                
       JPanel buttonPanel = new JPanel(new FlowLayout());
-      buttonPanel.setBackground(Color.GRAY)
+      buttonPanel.setBackground(Color.WHITE)
       add(buttonPanel, BorderLayout.CENTER);
    
       lightButton = new JButton("Light Tank");
