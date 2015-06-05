@@ -21,7 +21,8 @@ public class OptionsPanel extends JPanel
       setLayout(new BorderLayout());
    
       tankChoice = new JLabel("Choose your tank.");
-      add(tankChoice, BorderLayout.NORTH);
+      tankChoice.setFont(new Font("Serif", Font.PLAIN, 20));
+      add(tankChoice, BorderLayout.CENTER);
       
                
       JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -29,16 +30,19 @@ public class OptionsPanel extends JPanel
       add(buttonPanel, BorderLayout.CENTER);
    
       lightButton = new JButton("Light Tank");
+      lightButton.setFont(new Font("Serif", Font.ITALIC, 20));
       lightButton.addActionListener(new TankTypeListener("Light"));
       lightButton.setBackground(Color.BLUE.brighter());
       buttonPanel.add(lightButton);
       
       mediumButton = new JButton("Medium Tank");
+      medium.setFont(new Font("Serif", Font.PLAIN, 20));
       mediumButton.addActionListener(new TankTypeListener("Medium"));
       mediumButton.setBackground(Color.GREEN);
       buttonPanel.add(mediumButton);
             
       heavyButton = new JButton("Heavy Tank");
+      heavyButton.setFont(new Font("Serif", Font.BOLD, 20));
       heavyButton.addActionListener(new TankTypeListener("Heavy"));
       heavyButton.setBackground(Color.RED);
       buttonPanel.add(heavyButton);
