@@ -2,22 +2,22 @@ import java.awt.*;
 import javax.swing.*;
 public abstract class Tank
 {
-   private int myHealth;
+   private int myHealth;      //health
    private int mySpeed;    //pixels
-   private ImageIcon myIcon;
-   private int myX;
-   private int myY;
-   private int myLength = 100;
-   private int myDirection;
-   private Weapon myWeapon;
+   private ImageIcon myIcon;     //tank image
+   private int myX;     //x coords top left
+   private int myY;     //y coords top left
+   private int myLength = 100;      //length of image
+   private int myDirection;      //direction facing (N,S,E,W)
+   private Weapon myWeapon;      //weapon equipped
       
-   public Tank()
+   public Tank()           //default constructor
    {
       myHealth = 0;
       mySpeed = 0;
    }
    
-   public Tank(int health, int speed, Weapon weapon, int x, int y)
+   public Tank(int health, int speed, Weapon weapon, int x, int y)         //many arg constructor
    {
       myHealth = health;
       mySpeed = speed;
@@ -27,7 +27,7 @@ public abstract class Tank
       myWeapon = weapon;
    }
    
-   public int automove()
+   public int automove()      //chooses N/S/E/W
    {
       int random = (int)(Math.random() * 4);
       return random * 90;
@@ -35,11 +35,11 @@ public abstract class Tank
    
    public abstract String toString();
    
-   public void draw(Graphics myBuffer)
+   public void draw(Graphics myBuffer)    //draws
    {
       myIcon.paintIcon(null, myBuffer, myX, myY);
    }
-   public int getHealth()
+   public int getHealth()     //getters and setters
    {
       return myHealth;
    }
