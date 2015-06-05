@@ -17,7 +17,7 @@ public class DriverTank
       
       JFrame gameFrame = new JFrame("Game");
       gameFrame.setSize(1366, 650);
-      gameFrame.setLocation(0, 100);
+      gameFrame.setLocation(0, 0);
       gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       gameFrame.setContentPane(new GamePanel());
       gameFrame.setVisible(true);
