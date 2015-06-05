@@ -29,7 +29,7 @@ public abstract class Tank
    public int automove()
    {
       int random = (int)(Math.random() * 4);
-      return random;
+      return random * 90;
    }
    
    public abstract String toString();
