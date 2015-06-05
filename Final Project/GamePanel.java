@@ -120,13 +120,10 @@ public class GamePanel extends JPanel
    {
       public void actionPerformed(ActionEvent e)
       {
-<<<<<<< HEAD
-=======
        /*
        Randomly generates enemy
        Updates buffer
        */
->>>>>>> origin/master
          myBuffer.setColor(Color.WHITE);
          myBuffer.fillRect(0, 0, width, height);
          myTank.draw(myBuffer);
