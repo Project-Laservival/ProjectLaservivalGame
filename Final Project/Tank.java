@@ -7,6 +7,7 @@ public abstract class Tank
    private ImageIcon myIcon;
    private int myX;
    private int myY;
+   private int myLength = 100;
    private int myDirection;
    private Weapon myWeapon;
       
@@ -61,6 +62,11 @@ public abstract class Tank
    public int getY()
    {
       return myY;
+   }
+   
+   public int getLength()
+   {
+      return myLength;
    }
    
    public int getDirection()

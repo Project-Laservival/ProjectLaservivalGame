@@ -12,6 +12,8 @@ public class GamePanel extends JPanel
    private Tank myTank;                            //tank type
    private Laser myLaser = null;
    private boolean shooting = false;
+   private int width = 1366;
+   private int height = 768;
    
    public GamePanel()                            //constructor
    {
@@ -24,7 +26,7 @@ public class GamePanel extends JPanel
     Add keyListener
    */
    
-      myImage = new BufferedImage(1366, 650, BufferedImage.TYPE_INT_RGB);
+      myImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
       myTank = OptionsPanel.getTankType();
       
@@ -50,28 +52,40 @@ public class GamePanel extends JPanel
        */
          if((e.getKeyCode() == KeyEvent.VK_W)||(e.getKeyCode() == KeyEvent.VK_UP)||(e.getKeyCode() == KeyEvent.VK_KP_UP))
          {
-            myTank.setY(myTank.getY() - myTank.getSpeed());
+            if(myTank.getY() >= 0)
+            {
+               myTank.setY(myTank.getY() - myTank.getSpeed());
+            }
             myTank.setDirection(90);
             myTank.setIcon(myTank.toString() + "90" + ".png");
          }
          
          if((e.getKeyCode() == KeyEvent.VK_S)||(e.getKeyCode() == KeyEvent.VK_DOWN)||(e.getKeyCode() == KeyEvent.VK_KP_DOWN))
          {
-            myTank.setY(myTank.getY() + myTank.getSpeed());
+            if(myTank.getY() <= height - myTank.getLength())
+            {
+               myTank.setY(myTank.getY() + myTank.getSpeed());
+            }
             myTank.setDirection(270);
             myTank.setIcon(myTank.toString() + "270" + ".png");
          }
          
          if((e.getKeyCode() == KeyEvent.VK_A)||(e.getKeyCode() == KeyEvent.VK_LEFT)||(e.getKeyCode() == KeyEvent.VK_KP_LEFT))
          {
-            myTank.setX(myTank.getX() - myTank.getSpeed());
+            if(myTank.getX() >= 0)
+            {
+               myTank.setX(myTank.getX() - myTank.getSpeed());
+            }
             myTank.setDirection(180);
             myTank.setIcon(myTank.toString() + "180" + ".png");
          }
          
          if((e.getKeyCode() == KeyEvent.VK_D)||(e.getKeyCode() == KeyEvent.VK_RIGHT)||(e.getKeyCode() == KeyEvent.VK_KP_RIGHT))
          {
-            myTank.setX(myTank.getX() + myTank.getSpeed());
+            if(myTank.getX() <= width - myTank.getLength())
+            {
+               myTank.setX(myTank.getX() + myTank.getSpeed());
+            }
             myTank.setDirection(0);
             myTank.setIcon(myTank.toString() + "0" + ".png");
          }
@@ -83,6 +97,7 @@ public class GamePanel extends JPanel
          }
       }
    }
+   
    private class ListenerGame implements ActionListener    //game timer
    {
       public void actionPerformed(ActionEvent e)
@@ -92,7 +107,7 @@ public class GamePanel extends JPanel
        Updates buffer
        */
          myBuffer.setColor(Color.WHITE);
-         myBuffer.fillRect(0, 0, 1366, 650); 
+         myBuffer.fillRect(0, 0, width, height); 
       
          myTank.draw(myBuffer);
          
