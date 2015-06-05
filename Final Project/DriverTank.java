@@ -13,7 +13,7 @@ public class DriverTank
          optionsFrame.setVisible(true);
       }
       
-      //optionsFrame.setVisible(false);
+      optionsFrame.setVisible(false);
       
       JFrame gameFrame = new JFrame("Game");
       gameFrame.setSize(1366, 650);
