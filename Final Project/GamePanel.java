@@ -9,7 +9,6 @@ public class GamePanel extends JPanel
    private BufferedImage myImage;                    //image
    private Graphics myBuffer;                        //buffer
    private JLabel health;                        //health label
-   private int waveCount;                        //wave number
    private javax.swing.Timer gameTimer;                        //timer
    private Tank myTank;                            //tank type
    private Laser myLaser = null;
@@ -51,8 +50,8 @@ public class GamePanel extends JPanel
       public void keyPressed(KeyEvent e)
       {
        /*
-       Depending on pressed arrow keys, load different image
-       Add shooting code when spacebar is pressed
+       Depending on pressed arrow keys (keypad or normal) or WASD, load different image
+       Add shooting code when spacebar is pressed (only one shot on the screen by the tank at a time)
        */
          if((e.getKeyCode() == KeyEvent.VK_W)||(e.getKeyCode() == KeyEvent.VK_UP)||(e.getKeyCode() == KeyEvent.VK_KP_UP))
          {
@@ -117,7 +116,7 @@ public class GamePanel extends JPanel
       public void actionPerformed(ActionEvent e)
       {
        /*
-       Randomly generates enemy based on wave count
+       Randomly generates enemy
        Updates buffer
        */
          myBuffer.setColor(Color.WHITE);
