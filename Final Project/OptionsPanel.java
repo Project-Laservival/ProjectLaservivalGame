@@ -15,14 +15,14 @@ public class OptionsPanel extends JPanel
    Instantiate 3 buttons for each tank type
    Each button sets tankType to their respective tanks
    Add same TankTypeListener to each
-   Instantiate ‚ÄúPlay‚Äù button that activates after selection
+   Instantiate ìPlayî button that activates after selection
    */
    
       setLayout(new BorderLayout());
    
       tankChoice = new JLabel("Choose your tank.");
       tankChoice.setFont(new Font("Serif", Font.PLAIN, 20));
-      add(tankChoice, BorderLayout.CENTER);
+      add(tankChoice, BorderLayout.NORTH);
       
                
       JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -36,7 +36,7 @@ public class OptionsPanel extends JPanel
       buttonPanel.add(lightButton);
       
       mediumButton = new JButton("Medium Tank");
-      medium.setFont(new Font("Serif", Font.PLAIN, 20));
+      mediumButton.setFont(new Font("Serif", Font.PLAIN, 20));
       mediumButton.addActionListener(new TankTypeListener("Medium"));
       mediumButton.setBackground(Color.GREEN);
       buttonPanel.add(mediumButton);
@@ -70,7 +70,7 @@ public class OptionsPanel extends JPanel
       /*
       Determines which tankType was chosen
       Sets JLabel appropriately
-      Enables ‚ÄúPlay‚Äù button
+      Enables ìPlayî button
       */
       
          if(myTank.equals("Light"))
