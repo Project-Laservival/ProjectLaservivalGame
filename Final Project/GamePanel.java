@@ -47,28 +47,28 @@ public class GamePanel extends JPanel
        Depending on pressed arrow keys, load different image
        Add shooting code when spacebar is pressed
        */
-         if(e.getKeyCode() == KeyEvent.VK_W)
+         if((e.getKeyCode() == KeyEvent.VK_W)||(e.getKeyCode() == KeyEvent.VK_UP)||(e.getKeyCode() == KeyEvent.VK_KP_UP))
          {
             myTank.setY(myTank.getY() - myTank.getSpeed());
             myTank.setDirection(90);
             myTank.setIcon(myTank.toString() + "90" + ".png");
          }
          
-         if(e.getKeyCode() == KeyEvent.VK_S)
+         if((e.getKeyCode() == KeyEvent.VK_S)||(e.getKeyCode() == KeyEvent.VK_DOWN)||(e.getKeyCode() == KeyEvent.VK_KP_DOWN))
          {
             myTank.setY(myTank.getY() + myTank.getSpeed());
             myTank.setDirection(270);
             myTank.setIcon(myTank.toString() + "270" + ".png");
          }
          
-         if(e.getKeyCode() == KeyEvent.VK_A)
+         if((e.getKeyCode() == KeyEvent.VK_A)||(e.getKeyCode() == KeyEvent.VK_LEFT)||(e.getKeyCode() == KeyEvent.VK_KP_LEFT))
          {
             myTank.setX(myTank.getX() - myTank.getSpeed());
             myTank.setDirection(180);
             myTank.setIcon(myTank.toString() + "180" + ".png");
          }
          
-         if(e.getKeyCode() == KeyEvent.VK_D)
+         if((e.getKeyCode() == KeyEvent.VK_D)||(e.getKeyCode() == KeyEvent.VK_RIGHT)||(e.getKeyCode() == KeyEvent.VK_KP_RIGHT))
          {
             myTank.setX(myTank.getX() + myTank.getSpeed());
             myTank.setDirection(0);
