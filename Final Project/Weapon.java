@@ -4,21 +4,21 @@ public abstract class Weapon
    private int myDamage;
    private int myFireRate;    //milliseconds
    
-   public Weapon()
+   public Weapon()            //no arg constructor
    {
       myName = null;
       myDamage = 0;
       myFireRate = 0;
    }
    
-   public Weapon(String name, int damage, int rate)
+   public Weapon(String name, int damage, int rate)      //3 arg constructor
    {
       myName = name;
       myDamage = damage;
       myFireRate = rate;
    }
    
-   public String getName()
+   public String getName()             //getters and setters
    {
       return myName;
    }
