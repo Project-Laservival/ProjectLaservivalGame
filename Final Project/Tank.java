@@ -1,5 +1,5 @@
 import java.awt.*;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 public abstract class Tank
 {
    private int myHealth;
@@ -32,12 +32,11 @@ public abstract class Tank
    }
    
    public abstract String toString();
-         
-   public void draw(Graphics myBuffer) 
+   
+   public void draw(Graphics myBuffer)
    {
       myIcon.paintIcon(null, myBuffer, myX, myY);
    }
-   
    public int getHealth()
    {
       return myHealth;

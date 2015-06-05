@@ -36,7 +36,7 @@ public class GamePanel extends JPanel
    
    public void paintComponent(Graphics g)                //draws image
    {
-      g.drawImage(myImage, 0, 0, FRAME, FRAME, null);
+      g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
    }
    
    private class Key extends KeyAdapter                //yay keyboard

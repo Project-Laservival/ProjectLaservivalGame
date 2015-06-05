@@ -7,7 +7,7 @@ public class OptionsPanel extends JPanel
    private JLabel tankChoice;                    //shows tank selection
    private JButton lightButton, mediumButton, heavyButton, playButton;
    private static Tank tankType;                    //sets selection
-   private static boolean completed = false;
+   public static boolean completed = false;
 
    public OptionsPanel()
    {
@@ -48,11 +48,6 @@ public class OptionsPanel extends JPanel
    public static Tank getTankType()                    //tank type getter
    {
       return tankType;
-   }
-   
-   public static boolean completed()
-   {
-      return completed;
    }
 
    private class TankTypeListener implements ActionListener
