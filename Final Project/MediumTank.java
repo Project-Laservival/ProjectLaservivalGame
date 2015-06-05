@@ -3,13 +3,13 @@ public class MediumTank extends Tank
 {   
    public MediumTank()
    {
-      super(125, 7, new MediumWeapon(), 300, 300);          //center
+      super(125, 10, new MediumWeapon(), 300, 300);          //center
       setIcon("mediumtank0.png");
    }
    
    public MediumTank(int x, int y)
    {
-      super(125, 7, new MediumWeapon(), x, y);
+      super(125, 10, new MediumWeapon(), x, y);
       setIcon("mediumtank0.png");
    }
    

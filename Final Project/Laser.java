@@ -97,10 +97,13 @@ public class Laser
       myBuffer.setColor(Color.RED);
       if(myDirection == 0)
          myBuffer.drawLine(myX, myY, myX + myLength, myY);
+         
       else if(myDirection == 90)
          myBuffer.drawLine(myX, myY, myX, myY - myLength);
+         
       else if(myDirection == 180)
          myBuffer.drawLine(myX, myY, myX - myLength, myY);
+         
       else if(myDirection == 270)
          myBuffer.drawLine(myX, myY, myX, myY + myLength);
    }

@@ -79,6 +79,11 @@ public abstract class Tank
       return myWeapon;
    }
    
+   public int getDamage()
+   {
+      return myWeapon.getDamage();
+   }
+   
    public void setHealth(int health)
    {
       myHealth = health;

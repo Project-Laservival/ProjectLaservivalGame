@@ -16,8 +16,9 @@ public class GamePanel extends JPanel
    private boolean shooting = false;
    private int width = 1366;
    private int height = 768;
-   java.util.List<Laser> laserList = new ArrayList<Laser>();
-   java.util.List<Turret> turretList = new ArrayList<Turret>();
+   Turret[] turretArray = new Turret[10];
+   private int countdown, time;
+   private int score;
    
    public GamePanel()                            //constructor
    {
@@ -39,6 +40,10 @@ public class GamePanel extends JPanel
       
       addKeyListener(new Key());
       setFocusable(true);
+      
+      countdown = 20;
+      time = 0;
+      score = 0;
    }
    
    public void paintComponent(Graphics g)                //draws image
@@ -116,17 +121,8 @@ public class GamePanel extends JPanel
    {
       public void actionPerformed(ActionEvent e)
       {
-       /*
-       Randomly generates enemy based on wave count
-       Updates buffer
-       */
          myBuffer.setColor(Color.WHITE);
-         myBuffer.fillRect(0, 0, width, height); 
-      
-         if(rng())
-         {
-            turretList.add(new Turret());
-         }
+         myBuffer.fillRect(0, 0, width, height);
          myTank.draw(myBuffer);
          
          if(shooting)
@@ -134,14 +130,95 @@ public class GamePanel extends JPanel
             myLaser.move();
             myLaser.draw(myBuffer);
          }
+            
+         if(turretSpawn())
+         {
+            for(int k = 0; k < turretArray.length; k++)
+            {
+               if(turretArray[k] == null)
+               {
+                  turretArray[k] = new Turret();
+                  break;
+               }
+            }
+         }
+         
+         if(shooting)
+         {
+            for(int k = 0; k < turretArray.length; k++)
+            {
+               if(turretArray[k] != null)
+               {
+                  if(collide(myLaser, turretArray[k]))
+                  {
+                     turretArray[k].setHealth(turretArray[k].getHealth() - myTank.getDamage());
+                     shooting = false;
+                     
+                     if(turretArray[k].getHealth() <= 0)
+                     {
+                        turretArray[k] = null;
+                        score++;
+                     }
+                     break;
+                  }
+               }
+            }
+         }
+         
+         for(int k = 0; k < turretArray.length; k++)
+         {
+            if(turretArray[k] != null)
+            {
+               turretArray[k].draw(myBuffer);
+            }
+         }
+         
+         myBuffer.setColor(Color.BLACK);
+         myBuffer.setFont(new Font("Monospaced", Font.BOLD, 50));
+         time += 10;
+         if(time % 1000 == 0)
+         {
+            countdown = 20 - time / 1000;
+         }
+         myBuffer.drawString("" + countdown, 30, 50);
+         if(countdown <= 0)
+         {
+            myBuffer.fillRect(0, 0, width, height);
+            myBuffer.setFont(new Font("Monospaced", Font.BOLD, 30));
+            myBuffer.setColor(Color.GREEN);
+            myBuffer.drawString("I hope you liked it Mr. Rudwick! Your mediocre score: " + score, 200, 400);
+            gameTimer.stop();
+         }
+         
          repaint();
       }
    }
    
-   private boolean rng()
+   private boolean turretSpawn()
    {
-      if(Math.random() < 0.10)
+      if(Math.random() < 0.007)
          return true;
       return false;
+   }
+   
+   private boolean collide(Laser l, Turret t)
+   {
+      if(l.getDirection() == 0)
+         if(l.getX() + l.getLength() <= t.getX() && l.getY() >= t.getY() && l.getY() <= t.getY() + t.getLength())
+            return true;
+      
+      if(l.getDirection() == 90)
+         if(l.getY() - l.getLength() <= t.getY() && l.getX() >= t.getX() && l.getX() <= t.getX() + t.getLength())
+            return true;
+      
+      if(l.getDirection() == 180)
+         if(l.getX() - l.getLength() <= t.getX() + t.getLength() && l.getY() >= t.getY() && l.getY() <= t.getY() + t.getLength())
+            return true;
+      
+      if(l.getDirection() == 270)
+         if(l.getY() + l.getLength() <= t.getY() && l.getX() >= t.getX() && l.getX() <= t.getX() + t.getLength())
+            return true;
+      
+      return false;   
    }
 }

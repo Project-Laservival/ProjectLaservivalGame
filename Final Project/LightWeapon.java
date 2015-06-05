@@ -2,6 +2,6 @@ public class LightWeapon extends Weapon
 {   
    public LightWeapon()
    {
-      super("Fox Lasers", 5, 300);
+      super("Fox Lasers", 10, 300);
    }
 }
