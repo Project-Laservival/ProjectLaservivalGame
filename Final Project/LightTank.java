@@ -3,13 +3,18 @@ public class LightTank extends Tank
 {   
    public LightTank()
    {
-      super(100, 10, new LightWeapon(), 200, 200);
-      setImage("lighttank.jpg");
+      super(100, 10, new LightWeapon(), 300, 300);
+      setIcon("lighttank0.png");
    }
    
    public LightTank(int x, int y)
    {
       super(100, 10, new LightWeapon(), x, y);
-      setImage("lighttank.jpg");
+      setIcon("lighttank0.png");
+   }
+   
+   public String toString()
+   {
+      return "lighttank";
    }
 }

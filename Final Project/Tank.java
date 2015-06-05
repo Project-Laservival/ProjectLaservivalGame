@@ -7,6 +7,7 @@ public abstract class Tank
    private ImageIcon myIcon;
    private int myX;
    private int myY;
+   private int myDirection;
    private Weapon myWeapon;
       
    public Tank()
@@ -21,12 +22,20 @@ public abstract class Tank
       mySpeed = speed;
       myX = x;
       myY = y;
+      myDirection = 0;
       myWeapon = weapon;
    }
    
    public void automove()
    {
       int random = (int)(Math.random() * 4);
+   }
+   
+   public abstract String toString();
+         
+   public void draw(Graphics myBuffer) 
+   {
+      myIcon.paintIcon(null, myBuffer, myX, myY);
    }
    
    public int getHealth()
@@ -54,6 +63,11 @@ public abstract class Tank
       return myY;
    }
    
+   public int getDirection()
+   {
+      return myDirection;
+   }
+   
    public Weapon getWeapon()
    {
       return myWeapon;
@@ -69,7 +83,7 @@ public abstract class Tank
       mySpeed = speed;
    }
    
-   public void setImage(String filename)
+   public void setIcon(String filename)
    {
       myIcon = new ImageIcon(filename);
    }
@@ -82,6 +96,11 @@ public abstract class Tank
    public void setY(int y)
    {
       myY = y;
+   }
+   
+   public void setDirection(int d)
+   {
+      myDirection = d;
    }
       
    public void setWeapon(Weapon weapon)

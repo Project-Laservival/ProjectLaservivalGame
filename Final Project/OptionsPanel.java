@@ -5,9 +5,9 @@ import java.awt.image.*;
 public class OptionsPanel extends JPanel
 {                                                //fields
    private JLabel tankChoice;                    //shows tank selection
-   private JButton lightButton, mediumButton, heavyButton;
+   private JButton lightButton, mediumButton, heavyButton, playButton;
    private static Tank tankType;                    //sets selection
-   private static boolean completed;
+   private static boolean completed = false;
 
    public OptionsPanel()
    {
@@ -17,24 +17,29 @@ public class OptionsPanel extends JPanel
    Add same TankTypeListener to each
    Instantiate “Play” button that activates after selection
    */
+   
       setLayout(new BorderLayout());
    
       tankChoice = new JLabel("Choose your tank.");
       add(tankChoice, BorderLayout.NORTH);
+      
+               
+      JPanel buttonPanel = new JPanel(new FlowLayout());
+      add(buttonPanel, BorderLayout.CENTER);
    
       lightButton = new JButton("Light Tank");
-      lightButton.addActionListener(new TankTypeListener("light"));
-      add(lightButton, BorderLayout.CENTER);
-   
+      lightButton.addActionListener(new TankTypeListener("Light"));
+      buttonPanel.add(lightButton);
+      
       mediumButton = new JButton("Medium Tank");
-      mediumButton.addActionListener(new TankTypeListener("medium"));
-      add(mediumButton, BorderLayout.CENTER);
-   
+      mediumButton.addActionListener(new TankTypeListener("Medium"));
+      buttonPanel.add(mediumButton);
+            
       heavyButton = new JButton("Heavy Tank");
-      heavyButton.addActionListener(new TankTypeListener("heavy"));
-      add(heavyButton, BorderLayout.CENTER);
+      heavyButton.addActionListener(new TankTypeListener("Heavy"));
+      buttonPanel.add(heavyButton);
    
-      JButton playButton = new JButton("Click to play.");
+      playButton = new JButton("Click to play.");
       playButton.addActionListener(new PlayListener());
       playButton.setEnabled(false);
       add(playButton, BorderLayout.SOUTH);
@@ -64,21 +69,23 @@ public class OptionsPanel extends JPanel
       Sets JLabel appropriately
       Enables “Play” button
       */
-         if(myTank.equals("light"))
+      
+         if(myTank.equals("Light"))
          {
             tankType = new LightTank();
          }
       
-         if(myTank.equals("medium"))
+         if(myTank.equals("Medium"))
          {
             tankType = new MediumTank();
          }
       
-         if(myTank.equals("heavy"))
+         if(myTank.equals("Heavy"))
          {
             tankType = new HeavyTank();
          }
          tankChoice.setText(myTank);
+         playButton.setEnabled(true);
       }
    }
 
@@ -88,11 +95,12 @@ public class OptionsPanel extends JPanel
       {
       /*
       Disable all buttons
-      Start TankPanel.start() method
       */
          lightButton.setEnabled(false);
          mediumButton.setEnabled(false);
          heavyButton.setEnabled(false);
+         playButton.setEnabled(false);
+         
          completed = true;
       }
    }

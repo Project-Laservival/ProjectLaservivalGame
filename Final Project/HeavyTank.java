@@ -3,13 +3,18 @@ public class HeavyTank extends Tank
 {
    public HeavyTank()
    {
-      super(150, 5, new HeavyWeapon(), 200, 200);
-      setImage("heavytank.jpg");
+      super(150, 5, new HeavyWeapon(), 300, 300);
+      setIcon("heavytank0.png");
    }
    
    public HeavyTank(int x, int y)
    {
       super(150, 5, new HeavyWeapon(), x, y);
-      setImage("heavytank.jpg");
+      setIcon("heavytank0.png");
+   }
+   
+   public String toString()
+   {
+      return "heavytank";
    }
 }

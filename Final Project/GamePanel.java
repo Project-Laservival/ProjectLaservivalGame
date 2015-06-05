@@ -9,8 +9,7 @@ public class GamePanel extends JPanel
    private JLabel health;                        //health label
    private int waveCount;                        //wave number
    private Timer gameTimer;                        //timer
-   private Tank myTank;                            //tank type
-   private ImageIcon tankIcon;                        //tank image
+   private Tank myTank, enemyTank;                            //tank type
    private static final int FRAME = 600;
    
    public GamePanel()                            //constructor
@@ -23,21 +22,21 @@ public class GamePanel extends JPanel
     Instantiate and start timer of 10 ms, add ListenerGame
     Add keyListener
    */
+   
       myImage = new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
       myTank = OptionsPanel.getTankType();
-      tankIcon = myTank.getIcon();
       
-      gameTimer = new Timer(1000, new ListenerGame());
-      waveCount = 1;
+      gameTimer = new Timer(10, new ListenerGame());
+      gameTimer.start();
+      
+      addKeyListener(new Key());
+      setFocusable(true);
    }
+   
    public void paintComponent(Graphics g)                //draws image
    {
-    /*
-    Draw background
-    Update tank img
-    Update enemy tank images
-    */
+      g.drawImage(myImage, 0, 0, FRAME, FRAME, null);
    }
    
    private class Key extends KeyAdapter                //yay keyboard
@@ -50,16 +49,32 @@ public class GamePanel extends JPanel
        */
          if(e.getKeyCode() == KeyEvent.VK_W)
          {
+            myTank.setY(myTank.getY() - myTank.getSpeed());
+            myTank.setDirection(90);
+            myTank.setIcon(myTank.toString() + "90" + ".png");
          }
-         if(e.getKeyCode() == KeyEvent.VK_A)
-         {
-         }
+         
          if(e.getKeyCode() == KeyEvent.VK_S)
          {
+            myTank.setY(myTank.getY() + myTank.getSpeed());
+            myTank.setDirection(270);
+            myTank.setIcon(myTank.toString() + "270" + ".png");
          }
+         
+         if(e.getKeyCode() == KeyEvent.VK_A)
+         {
+            myTank.setX(myTank.getX() - myTank.getSpeed());
+            myTank.setDirection(180);
+            myTank.setIcon(myTank.toString() + "180" + ".png");
+         }
+         
          if(e.getKeyCode() == KeyEvent.VK_D)
          {
+            myTank.setX(myTank.getX() + myTank.getSpeed());
+            myTank.setDirection(0);
+            myTank.setIcon(myTank.toString() + "0" + ".png");
          }
+         
          if(e.getKeyCode() == KeyEvent.VK_SPACE)
          {
          }
@@ -73,6 +88,12 @@ public class GamePanel extends JPanel
        Randomly generates enemy based on wave count
        Updates buffer
        */
+         myBuffer.setColor(Color.WHITE);
+         myBuffer.fillRect(0,0,FRAME,FRAME); 
+      
+         myTank.draw(myBuffer);
+         
+         repaint();
       }
    }
 }

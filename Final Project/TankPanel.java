@@ -10,10 +10,6 @@ public class TankPanel extends JPanel            //subclass of JPanel
       OptionsPanel options = new OptionsPanel();
       add(options, BorderLayout.NORTH);
       
-      while(!OptionsPanel.completed())
-      {
-      }
-      
       GamePanel game = new GamePanel();
       add(game, BorderLayout.CENTER);
    }
