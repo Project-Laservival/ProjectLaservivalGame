@@ -56,6 +56,11 @@ public class Laser
       return dy;
    }
    
+   public int getLength()
+   {
+      return myLength;
+   }
+   
    public int getDirection()
    {
       return myDirection;

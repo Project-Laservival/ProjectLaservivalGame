@@ -92,8 +92,18 @@ public class GamePanel extends JPanel
          
          if(e.getKeyCode() == KeyEvent.VK_SPACE)
          {
-            myLaser = new Laser(myTank.getX() + 50, myTank.getY() + 50, myTank.getDirection());
-            shooting = true;
+            if(shooting && (myLaser.getX() >= 0 && myLaser.getX() <= width - myLaser.getLength()) && (myLaser.getY() >= 0 && myLaser.getY() <= height - myLaser.getLength()))
+            {
+            }
+            
+            else if(shooting && !(myLaser.getX() >= 0 && myLaser.getX() <= width - myLaser.getLength()) && !(myLaser.getY() >= 0 && myLaser.getY() <= height - myLaser.getLength()))
+               shooting = false;
+            
+            else
+            {   
+               myLaser = new Laser(myTank.getX() + 50, myTank.getY() + 50, myTank.getDirection());
+               shooting = true;
+            }
          }
       }
    }
@@ -118,5 +128,12 @@ public class GamePanel extends JPanel
          }
          repaint();
       }
+   }
+   
+   private boolean rng()
+   {
+      if(Math.random() < 0.10)
+         return true;
+      return false;
    }
 }
